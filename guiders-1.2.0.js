@@ -191,10 +191,12 @@ var guiders = (function($) {
 
   guiders._highlightElement = function(selector) {
     $(selector).css({'z-index': guiders._zIndexForHighlight});
+    $(selector).addClass('highlight');
   };
 
   guiders._dehighlightElement = function(selector) {
     $(selector).css({'z-index': 1});
+    $(selector).removeClass('highlight');
   };
 
   guiders._hideOverlay = function() {
@@ -361,12 +363,13 @@ var guiders = (function($) {
     var myGuider = guiders._guiderById(id);
     if (myGuider.overlay) {
       guiders._showOverlay();
-      // if guider is attached to an element, make sure it's visible
-      if (myGuider.highlight) {
-        guiders._highlightElement(myGuider.highlight);
-      }
     }
-  
+    
+    // if an element has been passed in for highlighting, highlight it
+    if (myGuider.highlight) {
+      guiders._highlightElement(myGuider.highlight);
+    }
+
     guiders._attach(myGuider);
   
     // You can use an onShow function to take some action before the guider is shown.
