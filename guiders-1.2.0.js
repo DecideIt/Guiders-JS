@@ -190,13 +190,11 @@ var guiders = (function($) {
   };
 
   guiders._highlightElement = function(selector) {
-    $(selector).css({'z-index': guiders._zIndexForHighlight});
-    $(selector).addClass('highlight');
+    $(selector).addClass('g_highlight');
   };
 
   guiders._dehighlightElement = function(selector) {
-    $(selector).css({'z-index': 1});
-    $(selector).removeClass('highlight');
+    $(selector).removeClass('g_highlight');
   };
 
   guiders._hideOverlay = function() {
@@ -347,6 +345,7 @@ var guiders = (function($) {
 
   guiders.hideAll = function(omitHidingOverlay) {
     $(".guider").fadeOut("fast");
+    $(".g_highlight").removeClass('g_highlight');
     if (typeof omitHidingOverlay !== "undefined" && omitHidingOverlay === true) {
       // do nothing for now
     } else {

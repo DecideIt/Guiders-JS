@@ -79,6 +79,13 @@
   /* End rounded corners */
 }
 
+/*
+  Set the zindex of highlighted elements to be above the overlay
+*/
+.g_highlight { 
+  z-index: 101; 
+}
+
 #guider_overlay {
   background-color: #000;
   width: 100%;
